@@ -153,7 +153,7 @@ function getPopulation(response){
                 countyFull.push(stateCode);             
             }
        
-
+            setTimeout(function(){
             for (let i = 0; i < countyFull.length; i++) {
                 var URL = "https://www.broadbandmap.gov/broadbandmap/county-availability/jun2014/countyids/" + countyFull[i] + "?format=json"
                 $.ajax({
@@ -164,29 +164,29 @@ function getPopulation(response){
                     labelsOrigin.push(labelName)                   
                 })
             }
+            },1000);
 
+            
             $.ajax({
                 url: urlPop2,
                 method: "GET",
             }).then(function(response) {
                console.log(response)
+               setTimeout(function(){
                for (let i= 1; i< response.length; i++) {
                 var data2015 = parseInt(response[i][0])
                 datas2015.push(data2015)                 
                } 
-            }) 
+            })
+            },2000); 
 
 
             fillColor();
             fillBorder();
             setTimeout(function(){
-                //console.log(countyFull)
-                console.log(labelsOrigin)
-                console.log(datas)
-                //console.log(datas2015)
                 insertChart();
                 createChart(labelsOrigin,datas, datas2015);
-              },5000);
+              },3000);
             
         })
         
