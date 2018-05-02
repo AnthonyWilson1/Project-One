@@ -178,7 +178,7 @@ function getPopulation(response){
                 datas2015.push(data2015)                 
                } 
             })
-            },2000); 
+            },1000); 
 
 
             fillColor();
@@ -186,7 +186,7 @@ function getPopulation(response){
             setTimeout(function(){
                 insertChart();
                 createChart(labelsOrigin,datas, datas2015);
-              },3000);
+              },1000);
             
         })
         
